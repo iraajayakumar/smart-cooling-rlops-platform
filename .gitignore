@@ -1,0 +1,106 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.pyo
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv/
+
+# Python Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
+*.env
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Jupyter Notebooks
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Model Files (Large)
+# =========================
+models/
+checkpoints/
+*.pt
+*.pth
+*.zip
+
+# =========================
+# MLflow
+# =========================
+mlruns/
+mlartifacts/
+
+# =========================
+# Docker
+# =========================
+docker-data/
+*.tar
+
+# =========================
+# IDE / Editor Files
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Testing / Coverage
+# =========================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# =========================
+# Prometheus / Grafana Local Data
+# =========================
+prometheus_data/
+grafana_data/
+
+# =========================
+# Temporary Files
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Node (if dashboards/plugins added later)
+# =========================
+node_modules/
+
+# =========================
+# Misc
+# =========================
+*.bak
+*.sqlite3
