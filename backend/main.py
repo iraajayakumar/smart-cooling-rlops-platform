@@ -1,10 +1,15 @@
 from fastapi import FastAPI
-from simulator import DataCenterSimulator
+from simulator import Simulator
 from metrics import Metrics
+from schemas import State
+from rl_stub import predict_action
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
-sim = DataCenterSimulator()
+sim = Simulator()
 metrics = Metrics()
 
 @app.get("/")
@@ -12,7 +17,7 @@ def home():
     return {"message": "Backend is running!"}
 
 
-@app.get("/state")
+@app.get("/state", response_model=State)
 def get_state():
     return sim.get_state()
 
@@ -22,11 +27,12 @@ def optimize():
     state = sim.get_state()
 
     # TEMP: dummy action (later RL will replace)
-    action = 1  
+    action = predict_action(state) 
 
     new_state = sim.step(action)
 
     metrics.log(new_state, sim.energy)
+    logging.info(f"State: {state}, Action: {action}")
 
     return new_state
 
