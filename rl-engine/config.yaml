@@ -1,0 +1,43 @@
+# config.yaml
+# Hyperparameter configuration for the Data Center Cooling PPO agent.
+# All values here override DEFAULT_CONFIG in train.py.
+# Edit this file to tune without modifying source code.
+
+# ── Training ──────────────────────────────────────────────────────────────────
+timesteps:     300000      # total environment steps
+n_envs:        4           # parallel training environments
+seed:          42
+
+# ── Environment ───────────────────────────────────────────────────────────────
+workload: "random"         # "random" | "sine" | "spike"
+
+# ── PPO Hyperparameters ───────────────────────────────────────────────────────
+learning_rate:  0.0003
+n_steps:        2048       # steps per env per update
+batch_size:     64
+n_epochs:       10         # PPO epochs per update
+gamma:          0.99       # discount factor
+gae_lambda:     0.95       # GAE smoothing
+clip_range:     0.2        # PPO clip
+ent_coef:       0.01       # entropy bonus (exploration)
+vf_coef:        0.5        # value function loss coefficient
+max_grad_norm:  0.5
+
+# ── Network architecture ──────────────────────────────────────────────────────
+net_arch: [128, 128]       # shared MLP hidden layers
+
+# ── Callbacks ─────────────────────────────────────────────────────────────────
+reward_threshold: 150.0    # stop training early if eval reward exceeds this
+eval_freq:        10000    # evaluate every N steps
+
+# ── Notes ─────────────────────────────────────────────────────────────────────
+# For faster iteration (debugging), reduce to:
+#   timesteps: 50000
+#   n_envs: 2
+#   net_arch: [64, 64]
+#
+# For best convergence, try:
+#   timesteps: 1000000
+#   n_envs: 8
+#   learning_rate: 0.0001
+#   net_arch: [256, 256]
