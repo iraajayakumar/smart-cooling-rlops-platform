@@ -13,8 +13,8 @@ from reward import compute_reward
 
 
 # ── Physics constants (must match backend physics.py) ──────────────────────
-WORKLOAD_HEAT_FACTOR = 0.4   # temperature rise per workload unit per step
-COOLING_FACTOR       = 0.6   # temperature drop per cooling level per step
+WORKLOAD_HEAT_FACTOR = 0.3   # temperature rise per workload unit per step
+COOLING_FACTOR       = 1.0   # temperature drop per cooling level per step
 ENERGY_PER_LEVEL     = 2.0   # energy units per cooling level per step
 
 # ── Safety / operating limits ───────────────────────────────────────────────
@@ -27,7 +27,7 @@ WORKLOAD_MIN = 0.0
 WORKLOAD_MAX = 10.0
 
 # ── Episode config ──────────────────────────────────────────────────────────
-MAX_STEPS = 200
+MAX_STEPS = 500
 
 
 class DataCenterEnv(gym.Env):
