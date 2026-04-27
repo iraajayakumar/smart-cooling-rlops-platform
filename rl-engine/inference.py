@@ -40,7 +40,7 @@ logger = logging.getLogger(__name__)
 
 # ── Default paths ─────────────────────────────────────────────────────────────
 _ROOT          = Path(__file__).parent
-_MODEL_PATH    = _ROOT / "models" / "model.zip"
+_MODEL_PATH    = _ROOT / "models" / "best_model.zip"
 _NORMALIZER    = _ROOT / "models" / "vec_normalize.pkl"
 
 
