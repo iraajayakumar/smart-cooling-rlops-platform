@@ -1,0 +1,26 @@
+# Training
+timesteps: 2000000
+n_envs: 8
+seed: 42
+
+# Environment
+workload: random
+
+# PPO Hyperparameters
+learning_rate: 0.0003
+n_steps: 2048
+batch_size: 64
+n_epochs: 10
+gamma: 0.99
+gae_lambda: 0.95
+clip_range: 0.2
+ent_coef: 0.05
+vf_coef: 0.5
+max_grad_norm: 0.5
+
+# Network
+net_arch: [256, 256]
+
+# Callbacks
+reward_threshold: 100.0
+eval_freq: 10000
