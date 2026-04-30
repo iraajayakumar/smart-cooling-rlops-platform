@@ -12,9 +12,15 @@ app = FastAPI()
 sim = Simulator()
 metrics = Metrics()
 
+
 @app.get("/")
 def home():
     return {"message": "Backend is running!"}
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 
 @app.get("/state", response_model=State)
@@ -22,21 +28,16 @@ def get_state():
     return sim.get_state()
 
 
-@app.post("/optimize")
+@app.post("/optimize", response_model=State)
 def optimize():
     state = sim.get_state()
-
-    # TEMP: dummy action (later RL will replace)
-    action = predict_action(state) 
-
+    action = predict_action(state.model_dump())
+    logging.info(f"Predicted action: {action}")
     new_state = sim.step(action)
-
-    metrics.log(new_state, sim.energy)
-    logging.info(f"State: {state}, Action: {action}")
-
+    metrics.record(new_state.temperature, new_state.workload, new_state.cooling)
     return new_state
 
 
 @app.get("/metrics")
 def get_metrics():
-    return metrics.get_metrics()
+    return metrics.latest()
