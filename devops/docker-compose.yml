@@ -30,7 +30,7 @@ services:
       RL_PORT: ${RL_PORT}
       RL_HEALTH_PATH: ${RL_HEALTH_PATH}
       RL_METRICS_PATH: ${RL_METRICS_PATH}
-      MODEL_PATH: ${RL_MODEL_PATH}
+      MODEL_PATH: /app/models/best_model.zip
       INFERENCE_MODE: api
       LOG_LEVEL: ${LOG_LEVEL}
     ports:

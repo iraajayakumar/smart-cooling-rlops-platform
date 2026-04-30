@@ -4,15 +4,14 @@ WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV MODEL_PATH=/app/models/model.pkl
 ENV INFERENCE_MODE=api
 ENV LOG_LEVEL=INFO
 
-COPY rl-agent/requirements.txt /app/requirements.txt
+COPY rl-engine/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r /app/requirements.txt
 
-COPY rl-agent/ /app/
+COPY rl-engine/ /app/
 
 EXPOSE 8001
 
