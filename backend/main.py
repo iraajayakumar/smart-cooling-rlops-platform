@@ -5,6 +5,9 @@ from schemas import State
 from rl_stub import predict_action
 import logging
 
+from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
+from fastapi import Response
+
 logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
@@ -40,4 +43,4 @@ def optimize():
 
 @app.get("/metrics")
 def get_metrics():
-    return metrics.latest()
+    return Response(content=generate_latest(), media_type=CONTENT_TYPE_LATEST)

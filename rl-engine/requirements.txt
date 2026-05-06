@@ -1,16 +1,4 @@
-# rl-agent/requirements.txt
-# Core RL stack
-gymnasium>=0.29.0
-stable-baselines3>=2.3.0
-torch>=2.2.0
-numpy>=1.24.0
-
-# Config
-pyyaml>=6.0
-
-# Logging / monitoring
-tensorboard>=2.14.0
-
-# Visualisation (optional — only needed for utils/plot.py)
-matplotlib>=3.7.0
-pandas>=2.0.0
+fastapi
+uvicorn[standard]
+prometheus-client
+pydantic
