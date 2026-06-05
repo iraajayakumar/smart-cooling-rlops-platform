@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from simulator import Simulator
 from metrics import Metrics
 from schemas import State
-from rl_stub import predict_action
+from backend.rl_client import predict_action
 import logging
 
 logging.basicConfig(level=logging.INFO)
