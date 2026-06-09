@@ -118,7 +118,8 @@ class CoolingAgent:
         obs = self._state_to_obs(state)
         obs = self._normalize(obs)
         action, _states = self._model.predict(obs, deterministic=True)
-        return int(action)
+        action = np.asarray(action).squeeze()
+        return int(action.item())
 
     def predict_with_confidence(self, state: CoolingState | dict) -> dict:
         """
