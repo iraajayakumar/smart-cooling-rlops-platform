@@ -55,6 +55,10 @@ def test_optimize_endpoint_updates_state_and_logs_metrics(monkeypatch):
         "reward",
         "done",
         "temperature_delta",
+        "reward/total",
+        "reward/energy_penalty",
+        "reward/temp_penalty",
+        "reward/stability_bonus",
     ):
         assert key in last_entry
 

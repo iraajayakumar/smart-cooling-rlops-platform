@@ -34,6 +34,11 @@ def optimize():
         energy=sim.energy,
         cooling=new_state["cooling"],
     )
+    breakdown = reward_breakdown(
+        temperature=new_state["temperature"],
+        energy=sim.energy,
+        cooling=new_state["cooling"],
+    )
     metrics.log(
         new_state,
         sim.energy,
@@ -41,6 +46,7 @@ def optimize():
         reward=reward,
         done=False,
         temperature_before=temperature_before,
+        reward_breakdown=breakdown,
     )
     logging.info(f"State: {state}, Action: {action}")
     return new_state
