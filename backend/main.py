@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from simulator import Simulator
-from metrics import Metrics
-from schemas import State
+from backend.simulator import Simulator
+from backend.metrics import Metrics
+from backend.schemas import State
 from backend.rl_client import predict_action
 import logging
 
