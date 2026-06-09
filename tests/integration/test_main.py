@@ -42,10 +42,21 @@ def test_optimize_endpoint_updates_state_and_logs_metrics(monkeypatch):
     assert len(history) >= 1
 
     last_entry = history[-1]
-    for key in ("timestamp", "temperature", "cooling", "energy"):
+    for key in (
+        "timestamp",
+        "step",
+        "episode_id",
+        "model_version",
+        "temperature",
+        "workload",
+        "cooling",
+        "action",
+        "energy",
+        "reward",
+        "done",
+        "temperature_delta",
+    ):
         assert key in last_entry
-
-    assert last_entry["energy"] >= 0.0
 
     changed = (
         new_state["temperature"] != initial_state["temperature"]

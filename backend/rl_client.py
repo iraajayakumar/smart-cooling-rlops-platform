@@ -20,7 +20,7 @@ def predict_action(state: Dict[str, Any]) -> int:
     """
     global _rl_predict_action
     if _rl_predict_action is None:
-        from inference import predict_action as rl_predict_action  # type: ignore
+        from rl_engine.inference import predict_action as rl_predict_action  # type: ignore
         _rl_predict_action = rl_predict_action
 
     return int(_rl_predict_action(state))

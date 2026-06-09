@@ -34,7 +34,7 @@ import numpy as np
 from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import VecNormalize, DummyVecEnv
 
-from environment import DataCenterEnv
+from .environment import DataCenterEnv
 
 logger = logging.getLogger(__name__)
 

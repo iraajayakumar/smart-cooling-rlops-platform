@@ -9,7 +9,7 @@ Actions: 0=Low, 1=Medium, 2=High cooling
 import numpy as np
 import gymnasium as gym
 from gymnasium import spaces
-from reward import compute_reward
+from .reward import compute_reward
 
 
 # ── Physics constants (must match backend physics.py) ──────────────────────

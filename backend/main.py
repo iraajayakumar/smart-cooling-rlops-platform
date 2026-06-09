@@ -3,6 +3,7 @@ from backend.simulator import Simulator
 from backend.metrics import Metrics
 from backend.schemas import State
 from backend.rl_client import predict_action
+from rl_engine.reward import compute_reward, reward_breakdown
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -25,15 +26,23 @@ def get_state():
 @app.post("/optimize")
 def optimize():
     state = sim.get_state()
-
-    # TEMP: dummy action (later RL will replace)
-    action = predict_action(state) 
-
+    temperature_before = state["temperature"]
+    action = predict_action(state)
     new_state = sim.step(action)
-
-    metrics.log(new_state, sim.energy)
+    reward = compute_reward(
+        temperature=new_state["temperature"],
+        energy=sim.energy,
+        cooling=new_state["cooling"],
+    )
+    metrics.log(
+        new_state,
+        sim.energy,
+        action=action,
+        reward=reward,
+        done=False,
+        temperature_before=temperature_before,
+    )
     logging.info(f"State: {state}, Action: {action}")
-
     return new_state
 
 
