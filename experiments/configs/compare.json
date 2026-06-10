@@ -1,0 +1,10 @@
+{
+  "name": "compare",
+  "steps": 100,
+  "seed": 42,
+  "workload_pattern": "random",
+  "model_a_path": "rl_engine/models/model.zip",
+  "model_b_path": "rl_engine/models/best_model.zip",
+  "normalizer_path": "rl_engine/models/vec_normalize.pkl",
+  "output_prefix": "compare_model_a_vs_b"
+}

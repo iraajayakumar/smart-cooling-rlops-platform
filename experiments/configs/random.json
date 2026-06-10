@@ -1,0 +1,9 @@
+{
+  "name": "random",
+  "steps": 100,
+  "seed": 42,
+  "workload_pattern": "random",
+  "model_path": "rl_engine/models/best_model.zip",
+  "normalizer_path": "rl_engine/models/vec_normalize.pkl",
+  "output_prefix": "random_run"
+}
